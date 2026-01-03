@@ -43,12 +43,17 @@ function IntroAnimation({ onComplete }: { onComplete: () => void }) {
 
       gsap.set([".tech-group", ".saws-group"], { x: 0 });
 
+      const REDIRECT_DELAY = 0.5;
+
       const tl = gsap.timeline({
         delay: 0.6,
         onComplete: () => {
           if (completed) return;
           completed = true;
-          onComplete();
+
+          gsap.delayedCall(REDIRECT_DELAY, () => {
+            onComplete();
+          });
         },
       });
 

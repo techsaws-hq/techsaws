@@ -5,14 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { useTheme } from "next-themes";
+
+import { useTheme } from "@/hooks/use-theme";
 
 import { LanguageEnum } from "@/enums/language-enum";
 
 import Logo from "../../../public/favicons/logo.svg";
 import { IoMdMenu, IoMdMoon, IoMdSunny } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
-import { ThemeEnum } from "@/enums/theme-enum";
 
 function HeaderNotchMobile({
   hamOpen,
@@ -25,7 +25,7 @@ function HeaderNotchMobile({
 }) {
   const [language, setLanguage] = useState("EN");
 
-  const { theme, setTheme } = useTheme();
+  const { darkTheme, toggleTheme } = useTheme();
 
   return (
     <>
@@ -120,18 +120,10 @@ function HeaderNotchMobile({
               </div>
 
               <button
-                onClick={() =>
-                  setTheme(
-                    theme === ThemeEnum.DARK ? ThemeEnum.LIGHT : ThemeEnum.DARK
-                  )
-                }
+                onClick={toggleTheme}
                 className="h-9 w-9 rounded-full bg-white/10 flex-center text-white"
               >
-                {theme === ThemeEnum.DARK ? (
-                  <IoMdSunny size={18} />
-                ) : (
-                  <IoMdMoon size={18} />
-                )}
+                {darkTheme ? <IoMdSunny size={18} /> : <IoMdMoon size={18} />}
               </button>
             </div>
           </motion.div>

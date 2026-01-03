@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,6 +26,28 @@ function HeaderNotchMobile({
   const [language, setLanguage] = useState("EN");
 
   const { darkTheme, toggleTheme } = useTheme();
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const toggleRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (!hamOpen) return;
+
+    const handlePointerDown = (e: PointerEvent) => {
+      const target = e.target as Node;
+
+      if (
+        menuRef.current?.contains(target) ||
+        toggleRef.current?.contains(target)
+      ) {
+        return;
+      }
+
+      setHamOpen(false);
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [hamOpen, setHamOpen]);
 
   return (
     <>
@@ -48,10 +70,12 @@ function HeaderNotchMobile({
               width={55}
               height={55}
               priority
+              className="animate-ts-breathe"
             />
           </Link>
 
           <motion.button
+            ref={toggleRef}
             onClick={() => setHamOpen((v) => !v)}
             className="h-9 w-9 flex-center text-white"
             initial={false}
@@ -60,6 +84,7 @@ function HeaderNotchMobile({
           >
             <AnimatePresence mode="wait">
               <motion.span
+                ref={toggleRef}
                 key={hamOpen ? "close" : "menu"}
                 initial={{ scale: 0.85 }}
                 animate={{ scale: 1 }}
@@ -76,6 +101,7 @@ function HeaderNotchMobile({
       <AnimatePresence>
         {hamOpen && (
           <motion.div
+            ref={menuRef}
             initial={{ y: -28 }}
             animate={{ y: 0 }}
             exit={{ y: -36 }}
@@ -87,7 +113,7 @@ function HeaderNotchMobile({
             className="pointer-events-auto mt-4 w-full rounded-3xl bg-black dark:bg-[#0A0A0A] backdrop-blur-xl dark:backdrop-blur-2xl shadow-[0_12px_30px_rgba(0,0,0,0.22)] dark:shadow-[0_10px_26px_rgba(0,0,0,0.9)] p-6 before:absolute before:inset-0 before:rounded-[inherit] before:content-[''] before:pointer-events-none before:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] dark:before:shadow-[inset_0_1px_0_rgba(255,255,255,0.035)] z-[10]"
           >
             <nav className="flex flex-col gap-4 text-lg font-heading text-white">
-              {["Home", "Services", "Work", "About", "Plans", "Contact"].map(
+              {["Home", "Services", "Work", "About", "Pricings", "Contact"].map(
                 (link) => (
                   <Link
                     key={link}
@@ -123,7 +149,11 @@ function HeaderNotchMobile({
                 onClick={toggleTheme}
                 className="h-9 w-9 rounded-full bg-white/10 flex-center text-white"
               >
-                {darkTheme ? <IoMdSunny size={18} /> : <IoMdMoon size={18} />}
+                {darkTheme ? (
+                  <IoMdMoon size={18} className="text-[#EAF4FC]" />
+                ) : (
+                  <IoMdSunny size={18} className="text-[#F7CD1F]" />
+                )}
               </button>
             </div>
           </motion.div>

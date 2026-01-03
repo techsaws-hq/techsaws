@@ -34,7 +34,7 @@ function HeaderNotch({ collapsed }: { collapsed: boolean }) {
               width={55}
               height={55}
               priority
-              className="animate-pulse"
+              className="animate-ts-breathe"
             />
           </Link>
         </motion.div>
@@ -100,15 +100,15 @@ function HeaderNotch({ collapsed }: { collapsed: boolean }) {
               About
             </Link>
             <Link
-              href="/plans"
+              href="/pricings"
               className={cn(
                 "p-2 rounded-md",
-                path === "/plans"
+                path === "/pricings"
                   ? "bg-primary text-primary-foreground"
                   : "text-[#ffffff] hover:bg-[#2a2b2e]"
               )}
             >
-              Plans
+              Pricings
             </Link>
             <Link
               href="/contact-us"

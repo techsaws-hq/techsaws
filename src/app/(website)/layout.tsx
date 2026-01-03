@@ -1,4 +1,4 @@
-import { NotchHeader } from "@/components/layouts/header";
+import { Header } from "@/components/layouts/header";
 
 export default function WebsiteLayout({
   children,
@@ -7,9 +7,8 @@ export default function WebsiteLayout({
 }>) {
   return (
     <>
-    <NotchHeader />
-    {children}
+      <Header />
+      {children}
     </>
-          
   );
 }

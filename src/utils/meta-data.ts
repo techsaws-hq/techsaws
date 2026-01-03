@@ -4,11 +4,11 @@ const BASE_URL =
   process.env.NEXT_PUBLIC_FRONTEND_URL || "https://www.techsaws.com";
 
 export const defaultMetadata: Metadata = {
-  title: "TechSaws – We Build. We Brand. We Break Boundaries",
+  title: "TechSaws – We Build. We Brand. We Break Boundaries.",
   description:
     "TechSaws builds future-ready web apps, cybersecurity-first software development, SaaS platforms, mobile apps, and AI software. Full-stack development, UI/UX design, DevOps & product strategy.",
 
-  applicationName: "TechSaws – We Build. We Brand. We Break Boundaries",
+  applicationName: "TechSaws – We Build. We Brand. We Break Boundaries.",
   creator: "TechSaws",
   generator: "Next.js",
   keywords: [

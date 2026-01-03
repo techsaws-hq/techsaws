@@ -73,7 +73,7 @@ function IntroAnimation({ onComplete }: { onComplete: () => void }) {
           <div
             id="brand-intro"
             className={cn(
-              "relative inline-flex text-[40px] md:text-[80px] lg:text-[120px] font-bold tracking-[0.04em] leading-none select-none",
+              "relative inline-flex text-[45px] md:text-[95px] lg:text-[130px] font-bold tracking-[0.04em] leading-none select-none",
               lightTheme ? "text-float-light" : "text-float-dark"
             )}
           >

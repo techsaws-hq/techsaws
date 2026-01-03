@@ -7,16 +7,13 @@ import { useTheme } from "next-themes";
 
 /* ================== CONSTANTS ================== */
 
-const HEADER_HEIGHT = 56;
 const EXPANDED_WIDTH = 720;
 const COLLAPSED_WIDTH = 56;
 const LOGO_SIZE = 56;
 
-const MINI_HEIGHT = 40;
 const MINI_COLLAPSED = 40;
 const MINI_EXPANDED_LANG = 220;
 const MINI_EXPANDED_THEME = 120;
-const MINI_RADIUS = 9999;
 
 /* ================== MINI NOTCH ================== */
 
@@ -25,17 +22,21 @@ function MiniNotch({
   expandedWidth,
   children,
   visible,
-  surfaceClass,
-  dividerClass,
+  isDark,
 }: {
   icon: string;
   expandedWidth: number;
   children: React.ReactNode;
   visible: boolean;
-  surfaceClass: string;
-  dividerClass: string;
+  isDark: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
+
+  const surfaceClass = isDark
+    ? "bg-[#1f1f1f]/70 backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.85)] text-white"
+    : "bg-white/95 backdrop-blur-xl shadow-[0_18px_50px_rgba(0,0,0,0.25)] text-black";
+
+  const dividerClass = isDark ? "bg-white/30" : "bg-black/30";
 
   return (
     <motion.div
@@ -51,7 +52,6 @@ function MiniNotch({
         relative
         h-[40px]
         rounded-full
-        backdrop-blur-xl
         overflow-hidden
         flex items-center
         ${surfaceClass}
@@ -102,10 +102,9 @@ export function NotchHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ---------- THEME-AWARE MATERIAL ---------- */
-  const surfaceClass = isDark
-    ? "bg-black text-white border border-white/10 shadow-[0_12px_32px_rgba(0,0,0,0.9)]"
-    : "bg-white text-black shadow-[0_18px_50px_rgba(0,0,0,0.45)]";
+  const headerSurface = isDark
+    ? "bg-[#1f1f1f]/70 backdrop-blur-2xl shadow-[0_14px_40px_rgba(0,0,0,0.9)] text-white"
+    : "bg-white/95 backdrop-blur-xl shadow-[0_18px_50px_rgba(0,0,0,0.25)] text-black";
 
   const dividerClass = isDark ? "bg-white/30" : "bg-black/30";
   const dotClass = isDark ? "text-white/50" : "text-black/40";
@@ -114,13 +113,12 @@ export function NotchHeader() {
     <header className="fixed top-6 left-0 right-0 z-50 pointer-events-none">
       <div className="flex justify-center">
         <div className="flex items-center gap-8">
-          {/* LANGUAGE MINI NOTCH */}
+          {/* LANGUAGE */}
           <MiniNotch
             icon={language}
             expandedWidth={MINI_EXPANDED_LANG}
             visible={!collapsed}
-            surfaceClass={surfaceClass}
-            dividerClass={dividerClass}
+            isDark={isDark}
           >
             <div className="flex items-center justify-between w-full text-sm">
               {["DU", "EN", "ESP", "AR"].map((l, i, arr) => (
@@ -159,9 +157,8 @@ export function NotchHeader() {
               relative
               h-[56px]
               rounded-full
-              backdrop-blur-xl
               overflow-hidden
-              ${surfaceClass}
+              ${headerSurface}
             `}
           >
             {/* LOGO */}
@@ -201,13 +198,12 @@ export function NotchHeader() {
             )}
           </motion.div>
 
-          {/* THEME MINI NOTCH */}
+          {/* THEME */}
           <MiniNotch
             icon={theme === "dark" ? "☾" : "☼"}
             expandedWidth={MINI_EXPANDED_THEME}
             visible={!collapsed}
-            surfaceClass={surfaceClass}
-            dividerClass={dividerClass}
+            isDark={isDark}
           >
             <div className="flex items-center justify-between w-full">
               <button

@@ -9,7 +9,7 @@ import { ThemeEnum } from "@/enums/theme-enum";
 
 import { cn } from "@/lib/utils";
 
-import Logo from "../../public/favicons/logo.svg";
+import Logo from "../../../public/favicons/logo.svg";
 
 function IntroAnimation() {
   const { theme } = useTheme();

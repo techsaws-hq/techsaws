@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 import Logo from "../../../public/favicons/logo.svg";
 
-function IntroAnimation() {
+function IntroAnimation({ onComplete }: { onComplete: () => void }) {
   const { theme } = useTheme();
 
   const WORD = "TECHSAWS";
@@ -19,6 +19,13 @@ function IntroAnimation() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        onComplete();
+        return;
+      }
+
+      let completed = false;
+
       const letters = gsap.utils.toArray<HTMLElement>(".ts-letter");
 
       const opacities = [0.18, 0.32, 0.24, 0.45, 0.28, 0.38, 0.22, 0.52];
@@ -27,7 +34,6 @@ function IntroAnimation() {
         autoAlpha: 0,
         scale: 0.85,
         visibility: "hidden",
-        filter: "blur(0px) drop-shadow(0 0 0 transparent)",
       });
 
       gsap.set(letters, {
@@ -37,7 +43,14 @@ function IntroAnimation() {
 
       gsap.set([".tech-group", ".saws-group"], { x: 0 });
 
-      const tl = gsap.timeline({ delay: 0.7 });
+      const tl = gsap.timeline({
+        delay: 0.6,
+        onComplete: () => {
+          if (completed) return;
+          completed = true;
+          onComplete();
+        },
+      });
 
       tl.to(letters, {
         opacity: 1,
@@ -100,7 +113,7 @@ function IntroAnimation() {
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [onComplete]);
 
   return (
     <main

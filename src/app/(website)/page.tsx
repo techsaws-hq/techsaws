@@ -1,16 +1,16 @@
 "use client";
 
+import { useState } from "react";
+
 import HomePage from "@/containers/home-page";
 import IntroAnimation from "@/components/partials/intro-animation";
 
-import { useIntroGate } from "@/utils/intro-gate";
+export default function Home() {
+  const [showIntro, setShowIntro] = useState(true);
 
-function Home() {
-  const { ready, showIntro, markSeen } = useIntroGate();
-
-  if (!ready) return null;
-
-  return showIntro ? <IntroAnimation onComplete={markSeen} /> : <HomePage />;
+  return showIntro ? (
+    <IntroAnimation onComplete={() => setShowIntro(false)} />
+  ) : (
+    <HomePage />
+  );
 }
-
-export default Home;

@@ -1,13 +1,5 @@
-"use client";
-
-import ThemeToggle from "@/components/partials/theme-toggle";
-
 function HomePage() {
-  return (
-    <>
-      <ThemeToggle />
-    </>
-  );
+  return <main className="h-[300vh]"></main>;
 }
 
 export default HomePage;

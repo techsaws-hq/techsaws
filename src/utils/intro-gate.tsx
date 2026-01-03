@@ -4,9 +4,9 @@ import { useState } from "react";
 
 import { introStore } from "@/utils/intro.store";
 
-export function useIntroGate() {
-  const [showIntro, setShowIntro] = useState<boolean>(() => {
-    return !introStore.hasSeen();
+export function usePageIntroGate() {
+  const [showIntro, setShowIntro] = useState(() => {
+    return introStore.shouldShow();
   });
 
   const markSeen = () => {
@@ -14,9 +14,5 @@ export function useIntroGate() {
     setShowIntro(false);
   };
 
-  return {
-    ready: true,
-    showIntro,
-    markSeen,
-  };
+  return { showIntro, markSeen };
 }

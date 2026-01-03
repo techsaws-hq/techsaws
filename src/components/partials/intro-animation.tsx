@@ -118,12 +118,12 @@ function IntroAnimation({ onComplete }: { onComplete: () => void }) {
     });
 
     return () => ctx.revert();
-  }, [onComplete]);
+  }, [theme, onComplete]);
 
   return (
     <main
       className={cn(
-        "min-h-screen grain text-heading bg-grain",
+        "min-h-screen grain text-heading bg-grain z-[9999]",
         isLight ? "light-bg-gradient" : "dark-bg-gradient"
       )}
     >

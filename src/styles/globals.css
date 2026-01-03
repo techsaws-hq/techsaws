@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #f5f5f4;
+
+    --heading: #0a0a0b;
+    --sub-heading: #4b5563;
+    --foreground: #333c4a;
+
+    --card: #f9fafb;
+    --card-foreground: #333c4a;
+
+    --popover: #f9fafb;
+    --popover-foreground: #333c4a;
+
+    --primary: #194cc9;
+    --primary-foreground: #ffffff;
+    --primary-hover: #143fa6;
+
+    --secondary: #00b9ff;
+    --secondary-foreground: #ffffff;
+    --secondary-hover: #009fd9;
+
+    --muted: #d0d4da;
+    --muted-foreground: #55606e;
+    --muted-hover: #c2c7cd;
+
+    --accent: #ab288b;
+    --accent-foreground: #ffffff;
+
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+
+    --border: #d8dee9;
+    --input: #edf1f5;
+    --ring: #194cc9;
+
+    --radius: 0.65rem;
+  }
+
+  .dark {
+    --background: #0b0c0f;
+
+    --heading: #ffffff;
+    --sub-heading: #9ca3af;
+    --foreground: #cfd1d4;
+
+    --card: #171717;
+    --card-foreground: #cfd1d4;
+
+    --popover: #171717;
+    --popover-foreground: #cfd1d4;
+
+    --primary: #194cc9;
+    --primary-foreground: #ffffff;
+    --primary-hover: #143fa6;
+
+    --secondary: #00b9ff;
+    --secondary-foreground: #ffffff;
+    --secondary-hover: #009fd9;
+
+    --muted: #2a2b2e;
+    --muted-foreground: #a1a6ae;
+    --muted-hover: #3b3c40;
+
+    --accent: #ab288b;
+    --accent-foreground: #ffffff;
+
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+
+    --border: #2e2f2f;
+    --input: #212121;
+    --ring: #194cc9;
+
+    --radius: 0.65rem;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2 {
+  font-family: var(--font-inter), sans-serif;
+  color: var(--heading);
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-inter), sans-serif;
+  color: var(--sub-heading);
+}

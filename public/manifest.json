@@ -1,0 +1,30 @@
+{
+  "name": "TechSaws — We Build. We Brand. We Break Boundaries.",
+  "short_name": "TechSaws",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#1a4cc9",
+  "background_color": "#0a0a0b",
+  "icons": [
+    {
+      "src": "/favicons/logo-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicons/logo-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicons/logo-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

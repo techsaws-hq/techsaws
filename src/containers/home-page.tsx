@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-
 import { useTheme } from "@/hooks/use-theme";
+
+import { cn } from "@/lib/utils";
 
 function HomePage() {
   const { lightTheme } = useTheme();
@@ -10,7 +10,7 @@ function HomePage() {
   return (
     <main
       className={cn(
-        "h-[300vh] grain bg-grain ",
+        "grain bg-grain",
         lightTheme ? "light-bg-gradient" : "dark-bg-gradient"
       )}
     ></main>

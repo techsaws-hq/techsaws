@@ -29,6 +29,8 @@ export const defaultMetadata: Metadata = {
     canonical: BASE_URL,
   },
 
+  manifest: "/manifest.json",
+
   icons: {
     icon: [
       {

@@ -52,13 +52,12 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={theme} suppressHydrationWarning>
-      <head>
-        <GlobalScripts />
-      </head>
+      <head />
       <body
         className={`${inter.variable} ${ibm_plex_sans.variable} antialiased`}
       >
         <ThemeProvider>
+          <GlobalScripts />
           {children}
           <Toaster position="bottom-right" reverseOrder={false} />
         </ThemeProvider>

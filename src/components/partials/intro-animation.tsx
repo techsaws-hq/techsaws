@@ -3,13 +3,7 @@
 import { useLayoutEffect } from "react";
 import gsap from "gsap";
 
-import { useTheme } from "@/hooks/use-theme";
-
-import { cn } from "@/lib/utils";
-
 function IntroAnimation({ onComplete }: { onComplete: () => void }) {
-  const { lightTheme } = useTheme();
-
   const WORD = "TECHSAWS";
 
   useLayoutEffect(() => {
@@ -62,20 +56,12 @@ function IntroAnimation({ onComplete }: { onComplete: () => void }) {
   }, [onComplete]);
 
   return (
-    <main
-      className={cn(
-        "min-h-screen grain text-heading bg-grain z-[9999]",
-        lightTheme ? "light-bg-gradient" : "dark-bg-gradient"
-      )}
-    >
+    <main className="min-h-screen grain text-heading bg-grain z-[9999] light-bg-gradient">
       <section className="h-[calc(100svh-60px)] w-full flex items-center justify-center layout-standard">
         <div className="relative flex items-center justify-center">
           <div
             id="brand-intro"
-            className={cn(
-              "relative inline-flex text-[45px] md:text-[95px] lg:text-[130px] font-bold tracking-[0.04em] leading-none select-none",
-              lightTheme ? "text-float-light" : "text-float-dark"
-            )}
+            className="relative inline-flex text-[45px] md:text-[95px] lg:text-[130px] !text-heading font-bold tracking-[0.04em] leading-none select-none text-float-light"
           >
             <span className="tech-group inline-flex">
               {WORD.slice(0, 4)
@@ -97,6 +83,8 @@ function IntroAnimation({ onComplete }: { onComplete: () => void }) {
                 ))}
             </span>
           </div>
+
+          <p>We Brand. We Build. We Break Boundaries</p>
         </div>
       </section>
 

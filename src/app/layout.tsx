@@ -4,6 +4,7 @@ import { Inter, IBM_Plex_Sans } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 
 import { ThemeProvider } from "@/providers/theme-provider";
+import LenisProvider from "@/providers/lenis-provider";
 
 import { ThemeEnum } from "@/enums/theme-enum";
 
@@ -58,7 +59,7 @@ export default async function RootLayout({
       >
         <ThemeProvider>
           <GlobalScripts />
-          {children}
+          <LenisProvider>{children}</LenisProvider>
           <Toaster position="bottom-right" reverseOrder={false} />
         </ThemeProvider>
       </body>

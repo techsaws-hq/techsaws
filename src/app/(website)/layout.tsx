@@ -1,3 +1,5 @@
+import LenisProvider from "@/providers/lenis-provider";
+
 import { Header } from "@/components/layouts/header";
 
 import { ThemeReady } from "@/utils/theme-ready";
@@ -10,7 +12,7 @@ export default function WebsiteLayout({
   return (
     <ThemeReady>
       <Header />
-      {children}
+      <LenisProvider>{children}</LenisProvider>
     </ThemeReady>
   );
 }

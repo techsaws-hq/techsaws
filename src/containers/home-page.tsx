@@ -10,7 +10,7 @@ function HomePage() {
   return (
     <main
       className={cn(
-        "grain bg-grain",
+        "grain bg-grain h-[200svh]",
         lightTheme ? "light-bg-gradient" : "dark-bg-gradient"
       )}
     ></main>

@@ -1,6 +1,7 @@
 import LenisProvider from "@/providers/lenis-provider";
 
 import { Header } from "@/components/layouts/header";
+import Footer from "@/components/layouts/footer";
 
 import { ThemeReady } from "@/utils/theme-ready";
 
@@ -13,6 +14,7 @@ export default function WebsiteLayout({
     <ThemeReady>
       <Header />
       <LenisProvider>{children}</LenisProvider>
+      <Footer />
     </ThemeReady>
   );
 }

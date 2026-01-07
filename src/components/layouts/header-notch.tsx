@@ -8,6 +8,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 import Logo from "../../../public/favicons/logo.svg";
+import { FaCaretDown } from "react-icons/fa6";
 
 function HeaderNotch({ collapsed }: { collapsed: boolean }) {
   const path = usePathname();
@@ -53,26 +54,26 @@ function HeaderNotch({ collapsed }: { collapsed: boolean }) {
               Home
             </Link>
             <Link
-              href="/services"
+              href="/solutions"
               className={cn(
                 "p-2 rounded-md",
-                path === "/services"
+                path === "/solutions"
                   ? "bg-primary text-primary-foreground"
                   : "text-[#ffffff] hover:bg-[#2a2b2e]"
               )}
             >
-              Services
+              Solutions
             </Link>
             <Link
-              href="/work"
+              href="/pricings"
               className={cn(
                 "p-2 rounded-md",
-                path === "/work"
+                path === "/pricings"
                   ? "bg-primary text-primary-foreground"
                   : "text-[#ffffff] hover:bg-[#2a2b2e]"
               )}
             >
-              Work
+              Pricings
             </Link>
           </div>
 
@@ -89,38 +90,24 @@ function HeaderNotch({ collapsed }: { collapsed: boolean }) {
 
           <div className="flex gap-2 text-sm font-medium">
             <Link
-              href="/about-us"
+              href="/work"
               className={cn(
                 "p-2 rounded-md",
-                path === "/about-us"
+                path === "/work"
                   ? "bg-primary text-primary-foreground"
                   : "text-[#ffffff] hover:bg-[#2a2b2e]"
               )}
             >
-              About
+              Work
             </Link>
-            <Link
-              href="/pricings"
-              className={cn(
-                "p-2 rounded-md",
-                path === "/pricings"
-                  ? "bg-primary text-primary-foreground"
-                  : "text-[#ffffff] hover:bg-[#2a2b2e]"
-              )}
-            >
-              Pricings
-            </Link>
-            <Link
-              href="/contact-us"
-              className={cn(
-                "p-2 rounded-md",
-                path === "/contact-us"
-                  ? "bg-primary text-primary-foreground"
-                  : "text-[#ffffff] hover:bg-[#2a2b2e]"
-              )}
-            >
-              Contact
-            </Link>
+
+            <div className="p-2 rounded-md text-primary-foreground hover:bg-primary flex items-center gap-1 cursor-pointer">
+              Tools <FaCaretDown />
+            </div>
+
+            <div className="p-2 rounded-md text-primary-foreground hover:bg-primary cursor-pointer">
+              Plan My Project
+            </div>
           </div>
         </div>
       )}

@@ -112,19 +112,24 @@ function HeaderNotchMobile({
             }}
             className="pointer-events-auto mt-4 w-full rounded-3xl bg-black dark:bg-[#0A0A0A] backdrop-blur-xl dark:backdrop-blur-2xl shadow-[0_12px_30px_rgba(0,0,0,0.22)] dark:shadow-[0_10px_26px_rgba(0,0,0,0.9)] p-6 before:absolute before:inset-0 before:rounded-[inherit] before:content-[''] before:pointer-events-none before:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] dark:before:shadow-[inset_0_1px_0_rgba(255,255,255,0.035)] z-[10]"
           >
-            <nav className="flex flex-col gap-4 text-lg font-heading text-white">
-              {["Home", "Services", "Work", "About", "Pricings", "Contact"].map(
-                (link) => (
-                  <Link
-                    key={link}
-                    href={`/${link.toLowerCase()}`}
-                    onClick={() => setHamOpen(false)}
-                    className="py-2 border-b border-[#2e2f2f]"
-                  >
-                    {link}
-                  </Link>
-                )
-              )}
+            <nav className="flex flex-col gap-4 text-sm font-heading text-white">
+              {[
+                "Home",
+                "Solutions",
+                "Pricings",
+                "Work",
+                "Tools",
+                "Plan My Project",
+              ].map((link) => (
+                <Link
+                  key={link}
+                  href={`/${link.toLowerCase()}`}
+                  onClick={() => setHamOpen(false)}
+                  className="py-2 border-b border-[#2e2f2f]"
+                >
+                  {link}
+                </Link>
+              ))}
             </nav>
 
             <div className="mt-6 flex items-center justify-between">
